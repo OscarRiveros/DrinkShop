@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36dbd11f-54ed-45a1-affc-bc87e579bfca">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechainicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechacierre" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     empleado.`usuario` AS empleado_usuario,
+     caja.`fechainicio` AS caja_fechainicio,
+     caja.`apertura` AS caja_apertura,
+     caja.`entrada` AS caja_entrada,
+     caja.`salida` AS caja_salida,
+     caja.`cierre` AS caja_cierre,
+     caja.`cierrecaja` AS caja_cierrecaja,
+     caja.`diferenciacierre` AS caja_diferenciacierre,
+     caja.`estado` AS caja_estado,
+     caja.`fechacierre` AS caja_fechacierre
+FROM
+     `empleado` empleado INNER JOIN `caja` caja ON empleado.`idempleado` = caja.`idempleado`
+WHERE
+     caja.fechainicio = $P{fechainicio}
+or caja.fechacierre = $P{fechacierre}]]>
+	</queryString>
+	<field name="empleado_usuario" class="java.lang.String"/>
+	<field name="caja_fechainicio" class="java.sql.Timestamp"/>
+	<field name="caja_apertura" class="java.lang.Integer"/>
+	<field name="caja_entrada" class="java.lang.Integer"/>
+	<field name="caja_salida" class="java.lang.Integer"/>
+	<field name="caja_cierre" class="java.lang.Integer"/>
+	<field name="caja_cierrecaja" class="java.lang.Integer"/>
+	<field name="caja_diferenciacierre" class="java.lang.Integer"/>
+	<field name="caja_estado" class="java.lang.Integer"/>
+	<field name="caja_fechacierre" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="163" y="0" width="439" height="52" uuid="1df0053e-5833-4c3b-ab77-a2a2f32fd578"/>
+				<textElement>
+					<font size="30" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Informe de Caja Segun la Fecha]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="75" height="20" uuid="d4d99aec-d3e7-4700-afd5-e433f17d1d87"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="65" height="20" uuid="0beb486d-6931-47f2-9eae-f444c86f0e2a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Monto Salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="55" height="20" uuid="a359409d-72d3-4d4e-a1b6-a156410dd806"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[En caja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="0" width="74" height="20" uuid="e5e48287-7571-42c1-8e28-16c4865dfdf7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Monto Apertura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="671" y="0" width="67" height="20" uuid="2eefa63b-a57a-4c7e-ab1d-b1daef82caca"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha Cierre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="55" height="20" uuid="2e708e93-7728-4bfb-a7cb-1183eb3a804a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Monto Cierre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="0" width="97" height="20" uuid="e9d73b35-4736-4197-9e8d-e7bd11ef60c9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Monto de Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="0" width="117" height="20" uuid="0b0bdede-00c9-4803-a34b-4910434172d3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Diferencia Caja/Cierre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="0" width="74" height="20" uuid="a2214611-ac5e-4b6c-81a6-4b20e1d785ab"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Estado de Caja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="751" y="0" width="55" height="20" uuid="15b9a6d4-1f39-4c7a-bd70-8711b1842166"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Empleado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="738" y="17" width="64" height="18" uuid="bc19c204-62ea-4cce-9a1e-21745229727f"/>
+				<textFieldExpression><![CDATA[$F{empleado_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="18" width="76" height="19" uuid="70be3ec9-66f8-4d59-accc-5673543222c3"/>
+				<textFieldExpression><![CDATA[$F{caja_fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="17" width="87" height="20" uuid="10a07614-11df-45dc-8728-bd650d7724e5"/>
+				<textFieldExpression><![CDATA[$F{caja_apertura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="17" width="90" height="20" uuid="99addb81-77d4-40ae-bece-1b0944a7a0b8"/>
+				<textFieldExpression><![CDATA[$F{caja_entrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="17" width="95" height="20" uuid="68e1ec9b-6265-498d-b760-e0df3e5c98a7"/>
+				<textFieldExpression><![CDATA[$F{caja_salida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="18" width="55" height="19" uuid="4644306a-2fa3-4ab6-b095-3f9e6674fd87"/>
+				<textFieldExpression><![CDATA[$F{caja_cierre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="18" width="55" height="19" uuid="3081d259-8a88-49fc-a04b-639e65becaec"/>
+				<textFieldExpression><![CDATA[$F{caja_cierre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="17" width="100" height="20" uuid="0852291f-652d-4e47-9d92-23b729b9599e"/>
+				<textFieldExpression><![CDATA[$F{caja_diferenciacierre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="571" y="17" width="85" height="20" uuid="5c1c9d8b-e675-4233-873d-5de6c8ed003d"/>
+				<textFieldExpression><![CDATA[$F{caja_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="656" y="18" width="82" height="19" uuid="edcccefb-9d87-4a3f-9229-07b83920c3ff"/>
+				<textFieldExpression><![CDATA[$F{caja_fechacierre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

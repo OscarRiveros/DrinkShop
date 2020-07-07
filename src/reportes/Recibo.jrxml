@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c43a46b3-c838-4bdd-9464-4645d235034c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpagos" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     reciboventa.`idreciboventa` AS reciboventa_idreciboventa,
+     reciboventa.`numerofactura` AS reciboventa_numerofactura,
+     reciboventa.`fecha` AS reciboventa_fecha,
+     reciboventa.`monto` AS reciboventa_monto,
+     reciboventa.`idpagocuota` AS reciboventa_idpagocuota,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`apellido` AS cliente_apellido
+FROM
+     `pagoscuotas` pagoscuotas INNER JOIN `reciboventa` reciboventa ON pagoscuotas.`idpagocuota` = reciboventa.`idpagocuota`
+     INNER JOIN `facturaventa` facturaventa ON pagoscuotas.`idfacturaventa` = facturaventa.`idfacturaventa`
+     INNER JOIN `cliente` cliente ON facturaventa.`idcliente` = cliente.`idcliente`
+WHERE
+     reciboventa.idpagocuota = $P{idpagos}]]>
+	</queryString>
+	<field name="reciboventa_idreciboventa" class="java.lang.Integer"/>
+	<field name="reciboventa_numerofactura" class="java.lang.Integer"/>
+	<field name="reciboventa_fecha" class="java.sql.Date"/>
+	<field name="reciboventa_monto" class="java.lang.Integer"/>
+	<field name="reciboventa_idpagocuota" class="java.lang.Integer"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_apellido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="16" width="159" height="48" uuid="10f26303-997a-4de0-8d03-a9c69470a7c7"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="618" y="16" width="125" height="20" uuid="38316e08-e3e4-42a6-a879-dc8f6968b65e"/>
+				<textFieldExpression><![CDATA[$F{reciboventa_monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="591" y="52" width="142" height="20" uuid="840980dc-092a-40b4-9902-a468761da1a8"/>
+				<textFieldExpression><![CDATA[$F{reciboventa_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="16" width="100" height="20" uuid="c4aba0cf-5a7e-46bd-9c45-a0324ba3298b"/>
+				<textFieldExpression><![CDATA[$F{reciboventa_numerofactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="21" width="50" height="15" uuid="61d7feaf-96a6-4756-a427-38dc05f77168"/>
+				<text><![CDATA[Recibo n°]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="149" y="15" width="100" height="20" uuid="5b6a77e7-4443-4050-9c26-39a226f4528f"/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="15" width="100" height="20" uuid="7bc804ac-a7c2-4e45-94db-dc8e1577509f"/>
+				<textFieldExpression><![CDATA[$F{cliente_apellido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="18" width="75" height="17" uuid="d5498998-0e25-439b-b8eb-fcbf4afc2509"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="18" width="84" height="17" uuid="9c9d1e82-c4bf-4727-a61d-272608ee7d15"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="18" width="75" height="17" uuid="17efd6fd-5689-4364-bbc2-7c91828052ec"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="18" width="84" height="17" uuid="ef0aaedf-24f0-4603-be25-dfbcde08b1ff"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="15" width="76" height="15" uuid="415a19dd-c45b-44fe-94d4-97a01abad0e6"/>
+				<text><![CDATA[Recibi mas de:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="73" splitType="Stretch">
+			<rectangle>
+				<reportElement x="121" y="11" width="593" height="20" uuid="07f54c6f-5ee3-4179-b2ec-8e31c633e92d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="41" width="643" height="20" uuid="20f4c4d6-9297-4295-8b19-701718a71a10"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="148" y="11" width="161" height="20" uuid="18b43912-2864-4284-8b3a-cfb1cae12fff"/>
+				<text><![CDATA[noventa y cuatro milguaranies]]></text>
+			</staticText>
+			<line>
+				<reportElement x="309" y="21" width="395" height="1" uuid="3afc9f8c-3c29-40ee-95f2-ec844fa5fdf5"/>
+			</line>
+			<line>
+				<reportElement x="78" y="51" width="636" height="1" uuid="7151f5d4-5367-4bd5-bc5b-6d61a8921f39"/>
+			</line>
+			<staticText>
+				<reportElement x="26" y="13" width="100" height="20" uuid="d8b5b41f-f5a9-4a25-8999-eddb12e6ca41"/>
+				<text><![CDATA[La cantidad de:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="11" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="309" y="27" width="108" height="17" uuid="7a93b915-2a69-4495-8d8d-163553ef4006"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="634" y="57" width="108" height="17" uuid="3551f90f-5d67-4615-8a0c-39b35f886f76"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="27" width="108" height="17" uuid="08afbc51-6626-442c-b1b5-cb0ed99d61ec"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="27" width="108" height="17" uuid="06d53e2b-90c4-4e7f-bac8-81e326e16cfc"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="27" width="108" height="17" uuid="5603c624-847e-4926-b975-48138b556907"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="27" width="108" height="17" uuid="539ac4a8-9539-4b52-85a9-88e441faeddc"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[_ _ _ _ _ _ _ _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="665" y="74" width="39" height="20" uuid="84424fd3-cc99-402c-9203-a5cd997f9d5a"/>
+				<text><![CDATA[Firma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="30" width="81" height="14" uuid="620c236e-1cfd-44b2-9539-a42cdf99deff"/>
+				<text><![CDATA[Concepto de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="24" width="81" height="20" uuid="d93c1c7a-e2a7-4e54-ba12-3a5a69200a2e"/>
+				<text><![CDATA[pagos de cuotas]]></text>
+			</staticText>
+			<line>
+				<reportElement x="240" y="28" width="393" height="1" uuid="92b5a03d-25ab-403a-89d4-f6942d530121"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14792f36-b753-4c0a-817b-21794cc007fa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaUno" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaDos" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     facturacompra.`idfacturacompra` AS facturacompra_idfacturacompra,
+     facturacompra.`numero` AS facturacompra_numero,
+     facturacompra.`fecha` AS facturacompra_fecha,
+     facturacompra.`entregainicial` AS facturacompra_entregainicial
+FROM
+     `facturacompra` facturacompra
+where
+fecha between $P{fechaUno} and $P{fechaDos}]]>
+	</queryString>
+	<field name="facturacompra_idfacturacompra" class="java.lang.Integer"/>
+	<field name="facturacompra_numero" class="java.lang.String"/>
+	<field name="facturacompra_fecha" class="java.sql.Date"/>
+	<field name="facturacompra_entregainicial" class="java.lang.Integer"/>
+	<group name="facturacompra_numero">
+		<groupExpression><![CDATA[$F{facturacompra_numero}]]></groupExpression>
+		<groupHeader>
+			<band height="52">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="32" width="185" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="1e39e349-c9d4-4c4c-8e37-8554557d37b8"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Codigo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="185" y="32" width="185" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="9872a4d4-e99e-474e-a9eb-f4cdd2857406"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="370" y="32" width="185" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="532c62eb-fb38-44ca-9cc8-b89f2adc5403"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Monto]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="32" forecolor="#000000" backcolor="#E6E6E6" uuid="8c780e93-377e-41d7-b6e9-cd1e787ef20e"/>
+					<textElement textAlignment="Center">
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{facturacompra_numero}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="912aedc6-21ad-4f11-804e-c8338964149b"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="910ac04e-11e6-4a52-84c3-211351aa34eb"/>
+				<staticText>
+					<reportElement x="20" y="20" width="325" height="43" forecolor="#FFFFFF" uuid="9142ef69-24f1-4b84-890c-457e4e09a40c"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Monto Por Factura]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="c7989d15-1ab0-42e9-a09a-4b1c15c06fd7"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="df13212d-a9c7-473f-9e40-3419f9958163"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="0448f4d4-838b-4770-ab76-165139437975"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacompra_idfacturacompra}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="32e05b44-3fd5-4299-9dab-9f97a8f0f933"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacompra_fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="32b68c88-0b1e-49aa-935f-846a220e0d0d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacompra_entregainicial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="2377acf6-eecb-4441-9f40-70ccb3b5f627"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="310efeb8-b5f6-45b8-bbfc-b8030f430700"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="250d8564-1487-45fc-bae7-974763900e72"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="204e5dbe-3db3-444f-81e4-7cf442f71ce1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     facturacompra.`entregainicial` AS facturacompra_entregainicial,
+     empleado.`idempleado` AS empleado_idempleado,
+     empleado.`nombre` AS empleado_nombre,
+     empleado.`apellido` AS empleado_apellido,
+     empleado.`cinro` AS empleado_cinro,
+     proveedor.`nombre` AS proveedor_nombre,
+     proveedor.`RUC` AS proveedor_RUC
+FROM
+     `empleado` empleado INNER JOIN `facturacompra` facturacompra ON empleado.`idempleado` = facturacompra.`idempleado`
+     INNER JOIN `proveedor` proveedor ON facturacompra.`idproveedor` = proveedor.`idproveedor`]]>
+	</queryString>
+	<field name="facturacompra_entregainicial" class="java.lang.Integer"/>
+	<field name="empleado_idempleado" class="java.lang.Integer"/>
+	<field name="empleado_nombre" class="java.lang.String"/>
+	<field name="empleado_apellido" class="java.lang.String"/>
+	<field name="empleado_cinro" class="java.lang.String"/>
+	<field name="proveedor_nombre" class="java.lang.String"/>
+	<field name="proveedor_RUC" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="237" y="21" width="331" height="39" uuid="4ee86e06-ddb1-4048-a1f5-a6067084e0ce"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PAGOS A PROVEEDOR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="100" height="20" uuid="796a89a9-824c-4f01-b9b7-6dc71cf8b10a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="13" width="100" height="20" uuid="4c059060-05aa-4ae4-b023-96a1679dde9f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[RUC-Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="586" y="13" width="144" height="20" uuid="e5f99d80-f28a-4d3e-89e4-65e143c7e9a8"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Pagos a Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="10" width="100" height="20" uuid="eb28dc47-8210-47af-a636-b491a93f8570"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="10" width="100" height="20" uuid="b0fb0daa-72e8-4c98-ac85-adf2b169431f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="13" width="100" height="20" uuid="d12683c9-38eb-47f9-bf65-77f8f16ab9b4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="16" width="100" height="20" uuid="4fb44ec1-e5bb-4e33-8b3d-90ae50b2cd7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empleado_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="16" width="100" height="20" uuid="89e1d363-9fda-4df1-88b9-ed5e96f38528"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empleado_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="16" width="100" height="20" uuid="5645ed4a-6840-4385-906a-73e8c7bee87c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empleado_cinro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="16" width="100" height="20" uuid="51bd8092-6c54-4ab6-a6ad-784a72da5e7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{proveedor_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="16" width="100" height="20" uuid="15d98023-5e7a-492a-892c-0a2a07871180"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{proveedor_RUC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="16" width="100" height="20" uuid="81bcdaaf-b8bc-401a-87a5-fad1d3ad290a"/>
+				<textFieldExpression><![CDATA[$F{facturacompra_entregainicial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

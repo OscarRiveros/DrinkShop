@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2823e877-e597-4d83-9ddd-e1ce3ad63556">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     productos.`stock` AS productos_stock,
+     productos.`descripcion` AS productos_descripcion,
+     productos.`iva` AS productos_iva
+FROM
+     `productos` productos
+WHERE
+     productos.stock <= 5]]>
+	</queryString>
+	<field name="productos_stock" class="java.lang.Integer"/>
+	<field name="productos_descripcion" class="java.lang.String"/>
+	<field name="productos_iva" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="26" y="26" width="444" height="34" uuid="1a63129e-d43b-43b3-9693-3ce4eeddc5a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Informe de Stock baja de Productos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="353" y="10" width="53" height="20" uuid="f8fe9619-86d7-4d8e-8cfa-8689976b2d9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[IVA %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="12" width="157" height="20" uuid="dd9aa992-20b0-4a58-8ee5-88d2bba6cc0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Descripción del Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="12" width="114" height="20" uuid="9a5909bb-8052-4942-8b78-141139b5aad5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Stock del Producto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="192" y="11" width="100" height="20" uuid="8e19df52-8d77-42a0-8f36-eadbe6b1a29e"/>
+				<textFieldExpression><![CDATA[$F{productos_stock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="11" width="126" height="20" uuid="19a9084d-3b34-461d-8595-bf3d62a803ff"/>
+				<textFieldExpression><![CDATA[$F{productos_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="11" width="100" height="20" uuid="8ae046d6-84f0-445c-ba3e-4f43f4516775"/>
+				<textFieldExpression><![CDATA[$F{productos_iva}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

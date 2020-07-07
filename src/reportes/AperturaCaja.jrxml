@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c526919-cb17-4be4-9744-cc55bf1e7754">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     sum(facturaventa.entregainicial) AS entregainicial,
+     caja.`fechainicio` AS caja_fechainicio,
+     caja.`apertura` AS caja_apertura,
+     caja.`entrada` AS caja_entrada,
+     caja.`estado` AS caja_estado,
+     caja.`fechacierre` AS caja_fechacierre
+FROM
+     `caja` caja,
+     `facturaventa` facturaventa
+WHERE
+     fecha BETWEEN caja.fechainicio and curdate()
+     and caja.estado = '1']]>
+	</queryString>
+	<field name="entregainicial" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="caja_fechainicio" class="java.sql.Timestamp"/>
+	<field name="caja_apertura" class="java.lang.Integer"/>
+	<field name="caja_entrada" class="java.lang.Integer"/>
+	<field name="caja_estado" class="java.lang.Integer"/>
+	<field name="caja_fechacierre" class="java.sql.Date"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="ace8f578-ceaa-497a-8689-8c8436e78db2"/>
+				<staticText>
+					<reportElement x="20" y="20" width="300" height="43" forecolor="#FFFFFF" uuid="071d4f69-9614-4fd0-b591-669b5be6ace2"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Apertura/Entrada]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="505ca3f2-40f5-407b-b5e2-31c4ccdd883f"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement mode="Opaque" x="285" y="1" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="f5c78987-7cdb-465d-b85b-83ea7e4e3ad0"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Actual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="0f8bd7e8-8189-489a-8265-bec0ecd1dbce"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="116" y="0" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="33994adb-966f-47d5-a5c7-1f08f944126d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[apertura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="460" y="0" width="92" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="0fefeab9-0f57-4add-bc52-0f4782433a5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Entrada]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2e8296ca-3f06-4082-abd9-149c7d75a07a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="c453aa2f-fd25-4548-9429-7ae0ebb5ff99"/>
+			</line>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="8004e60c-9c24-4e9c-8f66-bdabc66f925a"/>
+				<textFieldExpression><![CDATA[$F{entregainicial}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="116" height="20" uuid="17f62c05-8d7c-4c92-af9c-fbebc78bc504"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caja_fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="116" y="0" width="92" height="20" uuid="4726c12a-1d44-430d-90c5-7b38fb541e89"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caja_apertura}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="285" y="0" width="170" height="19" uuid="7336cb67-f8cf-4ba9-95e4-1c3cd94bcced"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="67c25a7f-d5a7-4d37-b8cf-c8b2a2ab6f0b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="04e3cad9-760b-4c60-9deb-d73d53d3cc2f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="74f157bd-666d-4a53-8df7-b61b1716a2c5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

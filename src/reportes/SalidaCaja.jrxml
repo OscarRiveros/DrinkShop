@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53489dda-4bc9-4afe-8c26-9ac29338d69e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     sum(facturacompra.entregainicial) AS entregainicial,
+     caja.`fechainicio` AS caja_fechainicio,
+     caja.`salida` AS caja_salida,
+     caja.`cierre` AS caja_cierre,
+     caja.`estado` AS caja_estado,
+     caja.`fechacierre` AS caja_fechacierre,
+     caja.`idempleado` AS caja_idempleado
+FROM
+     `caja` caja,
+     `facturacompra` facturacompra
+WHERE
+      fecha BETWEEN caja.fechainicio and curdate()
+     and caja.estado = '1']]>
+	</queryString>
+	<field name="entregainicial" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="caja_fechainicio" class="java.sql.Timestamp"/>
+	<field name="caja_salida" class="java.lang.Integer"/>
+	<field name="caja_cierre" class="java.lang.Integer"/>
+	<field name="caja_estado" class="java.lang.Integer"/>
+	<field name="caja_fechacierre" class="java.sql.Date"/>
+	<field name="caja_idempleado" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#000000" uuid="9ddbc014-beae-4406-812b-ae45dc031c29"/>
+				<staticText>
+					<reportElement x="20" y="20" width="257" height="43" forecolor="#FFFFFF" uuid="6319dd23-faa1-41c2-ac7e-7d89f4dd5652"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Salidas General]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="ae68e618-814c-4095-bb57-17e23166c563"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement mode="Opaque" x="312" y="1" width="93" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="2d747e7a-29e8-4579-a020-b3aad3e30893"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Actual]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2fd5f0a8-7d4e-4e2e-a01f-0b86b45bc68a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="79" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="73349f49-319d-48bb-bfe1-61398caa08b9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[fechainicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="0" width="120" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="751e36dd-e5b1-42f3-8f2b-81f989192ddd"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Salida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b4932982-d697-41bc-a01c-6035c7e35b68"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="89" height="20" uuid="b3f29836-2fb5-418f-8c3f-2f388145a24d"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caja_fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="0ff92490-fc21-4964-af07-54ce18f50f8a"/>
+				<textFieldExpression><![CDATA[$F{entregainicial}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="288" y="0" width="147" height="13" uuid="9e54c833-f2e2-4787-af97-b04e45c84084"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="9a1a611a-19d6-48af-b607-14e937608e23"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="74844590-eb44-4d83-9050-b3d0bb3abb09"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="731d73fa-0d96-454a-bbc2-2abb069ac0f8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

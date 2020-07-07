@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f5d4cde5-b871-409a-920a-0e1f06d3f497">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idcliente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     (facturaventa.`entregainicial`+facturaventa.`saldo`) AS total,
+     facturaventa.`idfacturaventa` AS facturaventa_idfacturaventa,
+     facturaventa.`numerofactura` AS facturaventa_numerofactura,
+     facturaventa.`fecha` AS facturaventa_fecha,
+     facturaventa.`condiciondeventa` AS facturaventa_condiciondeventa,
+     facturaventa.`idempleado` AS facturaventa_idempleado,
+     facturaventa.`entregainicial` AS facturaventa_entregainicial,
+     facturaventa.`fechavence` AS facturaventa_fechavence,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`apellido` AS cliente_apellido,
+     facturaventa.`saldo` AS facturaventa_saldo,
+     facturaventa.`plazo` AS facturaventa_plazo,
+     facturaventa.`montocuota` AS facturaventa_montocuota
+FROM
+     `cliente` cliente INNER JOIN `facturaventa` facturaventa ON cliente.`idcliente` = facturaventa.`idcliente`
+WHERE
+     cliente.cinro = $P{idcliente}]]>
+	</queryString>
+	<field name="total" class="java.lang.Long"/>
+	<field name="facturaventa_idfacturaventa" class="java.lang.Integer"/>
+	<field name="facturaventa_numerofactura" class="java.lang.Integer"/>
+	<field name="facturaventa_fecha" class="java.sql.Date"/>
+	<field name="facturaventa_condiciondeventa" class="java.lang.String"/>
+	<field name="facturaventa_idempleado" class="java.lang.Integer"/>
+	<field name="facturaventa_entregainicial" class="java.lang.Integer"/>
+	<field name="facturaventa_fechavence" class="java.sql.Date"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_apellido" class="java.lang.String"/>
+	<field name="facturaventa_saldo" class="java.lang.Integer"/>
+	<field name="facturaventa_plazo" class="java.lang.Integer"/>
+	<field name="facturaventa_montocuota" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="212" y="21" width="341" height="48" uuid="b55adb22-659e-41d2-83c9-664faf2eee6f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deudas por Cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="17" width="48" height="20" uuid="73356f8a-54b8-4241-b799-d718818af27b"/>
+				<textElement>
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Nº Fac]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="17" width="62" height="20" uuid="a724c79d-a6f8-4551-a536-b32d977b627e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="17" width="88" height="20" uuid="d18b016f-3ce0-4882-bc17-96e7bbfcb88f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Condicion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="17" width="76" height="20" uuid="0bc56a77-9657-42e5-8c22-f90485495ea8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Entrega]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="17" width="86" height="20" uuid="43e6957e-07eb-4d84-a97a-54243a6ae381"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Vence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="17" width="100" height="20" uuid="b11b8fcb-a78c-492c-9363-bb2f8213a51e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="17" width="100" height="20" uuid="c97351ac-9413-4ee6-be03-8f4f7e763c60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="560" y="17" width="79" height="20" uuid="1cef42ea-4e49-4424-b6f6-888487c25a17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="639" y="17" width="65" height="20" uuid="50789a98-d6ec-4e56-8263-81d9758a9eab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Plazo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="704" y="17" width="100" height="20" uuid="0b539a5b-00ad-4345-acfa-b93e37582ad6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Monto Cuota]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="15" width="48" height="20" uuid="0daa0086-dd1b-4b99-bcf7-e189bc972f42"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_idfacturaventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="15" width="62" height="20" uuid="07325093-adf5-4bb9-935b-d55a321d4a02"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="15" width="86" height="20" uuid="47336abc-1e31-4599-9359-d27ebea1b9b4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_condiciondeventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="15" width="76" height="20" uuid="af138448-b8a5-4814-a1fb-dc9cb3878242"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_entregainicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="15" width="86" height="20" uuid="249c530b-8820-4693-a995-5daeb020a7fa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_fechavence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="15" width="100" height="20" uuid="d418e53b-885e-4bd7-9d88-7966cd2a0927"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="15" width="100" height="20" uuid="00f79b50-96f5-4532-956f-3516ea6c8fc1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cliente_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="560" y="15" width="79" height="20" uuid="12f7fc6f-a5f3-429d-b3f7-6c3eaccc7fd8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_saldo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="639" y="15" width="77" height="20" uuid="9114de66-a77b-441c-bd1f-351fcce2bc95"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_plazo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="716" y="15" width="86" height="20" uuid="0a0f80ad-4759-4d74-b31f-83b0c2d03996"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{facturaventa_montocuota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
